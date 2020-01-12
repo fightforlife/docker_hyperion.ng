@@ -11,4 +11,4 @@ RUN cd ./hyperion/build && make -j $(nproc)
 RUN cd ./hyperion/build && make install/strip
 
 
-RUN hyperiond
+CMD ["hyperiond", ""]
