@@ -7,7 +7,7 @@ RUN apt-get -y install wget sudo git cmake build-essential qtbase5-dev libqt5ser
 RUN git clone --recursive https://github.com/hyperion-project/hyperion.ng.git hyperion
 RUN mkdir ./hyperion/build
 RUN cd ./hyperion/build && cmake -DCMAKE_BUILD_TYPE=Release ..
-RUN cd ./hyperion/build && make -j $(nproc)
+RUN cd ./hyperion/build && make -j 2
 RUN cd ./hyperion/build && make install/strip
 
 
