@@ -2,7 +2,10 @@ FROM ubuntu:rolling
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get -y install curl wget sudo
+RUN apt-get -y install curl wget
 
-RUN wget -qO- https://raw.githubusercontent.com/hyperion-project/hyperion.ng/master/bin/compile.sh | sh
-
+RUN git clone --recursive https://github.com/hyperion-project/hyperion.ng.git hyperion && cd hyperion
+RUN mkdir build && cd build
+RUN cmake -DCMAKE_BUILD_TYPE=Release ..
+RUN make -j $(nproc)
+RUN make install/strip
